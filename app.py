@@ -1,6 +1,6 @@
 import streamlit as st
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, TextIteratorStreamer
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from sentence_transformers import SentenceTransformer
 import pickle
 
@@ -8,10 +8,17 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 @st.cache_resource
 def load_models(model_name="meta-llama/Llama-3.2-3B-Instruct"):
+    # Configure 4-bit quantization
+    bnb_config = BitsAndBytesConfig(
+        load_in_4bit=True, 
+        bnb_4bit_quant_type="nf4",  # Normalized float 4-bit (recommended)
+        bnb_4bit_compute_dtype=torch.float16,  
+        bnb_4bit_use_double_quant=True  # Improves performance by applying second quantization
+    )
+
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        torch_dtype=torch.bfloat16,
-        use_safetensors=True,
+        quantization_config=bnb_config,
         device_map=device,
     )
 
@@ -51,7 +58,7 @@ def RAG_GITA(query):
     Your goal is to first interprete the writtings of gita in the given context and then try your best to relate to user's query.
     Answer in simple english that a 15 year old can undrestand using your interpretation of the given text. 
     Gita CONTEXT : {CONTEXT_TEXT}
-    Answer should not be longer than 500 words. Do not use markdown format. Quote the text you have used from the Gita context'''},
+    Answer should not be longer than 200 words. Do not use markdown format. Quote the text you have used from the Gita context'''},
     ]
 
     prompt = tokenizer.apply_chat_template(conversation, tokenize=False)
@@ -73,7 +80,11 @@ st.title("Gita Question Answering")
 query = st.text_area("Ask your question about the Gita:", "Is there an afterlife? What happens when we die?")
 
 if st.button("Get Answer") and query:
-    response, CONTEXT_TEXT= RAG_GITA(query)
+    with st.spinner("Fetching answer..."):
+        response, CONTEXT_TEXT = RAG_GITA(query)
     st.write(response)
     with st.expander("See Context from Gita"):
-        st.write(CONTEXT_TEXT)
+        st.markdown(
+            f'<div style="background-color:#5c4605; padding:10px; border-radius:5px;">{CONTEXT_TEXT}</div>', 
+            unsafe_allow_html=True
+        )
