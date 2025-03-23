@@ -1,5 +1,7 @@
 # Introduction to LLM
-
+<p style="text-align: center;">
+<img src="screenshots/gita_RAG_app_interface.png" alt="Sample Image" width="400" height="400">
+</p>
 This repository contains various Jupyter notebooks that demonstrate the use of Large Language Models (LLMs) for different tasks such as text summarization, podcast writing, and self-supervised training. Follow the instructions below to set up the environment and explore the notebooks.
 
 ## Environment Setup
@@ -80,6 +82,7 @@ This will prompt you to enter your access token directly within the notebook int
     In the Jupyter interface, navigate to the notebook you want to open and click on it.
 
 ## Jupyter Notebooks
+
 
 - kokoro_TTS.ipynb: Demonstrates text-to-speech conversion using a pre-trained model.
 
