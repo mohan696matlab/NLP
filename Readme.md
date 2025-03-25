@@ -1,7 +1,5 @@
 # Introduction to LLM
-<p style="text-align: center;">
-<img src="screenshots/gita_RAG_app_interface.png" alt="Sample Image" width="400" height="400">
-</p>
+
 This repository contains various Jupyter notebooks that demonstrate the use of Large Language Models (LLMs) for different tasks such as text summarization, podcast writing, and self-supervised training. Follow the instructions below to set up the environment and explore the notebooks.
 
 ## Environment Setup
@@ -42,33 +40,6 @@ You can install them using the following command:
 pip install torch transformers tqdm numpy sentence-transformers matplotlib PyPDF2 IPython
 ```
 
-## How to Access the Llama 3.2 Model from Hugging Face [(video to access llama 3.2)](https://youtu.be/7HlHPWNS-20)
-
-### To access Meta's Llama 3.2 model on Hugging Face, follow these steps:
-
-1. Create a Hugging Face Account
-2. Visit Hugging Face and sign up for an account.​
-3. Navigate to the Llama 3.2 Model Repository
-4. Go to the Meta Llama organization page on Hugging Face.​
-5. Select the specific Llama 3.2 model you wish to access, such as Llama-3.2-1B 
-
-### Request Access to the Model
-
-1. On the model's page, click the "Request Access" button.​
-2. Fill out the required information and agree to the license terms and acceptable use policy.​
-3. Submit your request
-
-### Set Up Your Hugging Face Authentication Token
-
-After approval, generate a "READ" token in your Hugging Face account settings.
-```python
-from huggingface_hub import notebook_login
-notebook_login()
-```
-This will prompt you to enter your access token directly within the notebook interface.
-
-
-
 ## Running the Jupyter Notebooks
 
 1. **Start Jupyter Notebook:**
@@ -82,7 +53,6 @@ This will prompt you to enter your access token directly within the notebook int
     In the Jupyter interface, navigate to the notebook you want to open and click on it.
 
 ## Jupyter Notebooks
-
 
 - kokoro_TTS.ipynb: Demonstrates text-to-speech conversion using a pre-trained model.
 
