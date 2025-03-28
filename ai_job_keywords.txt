@@ -1,0 +1,14 @@
+'Python', 'Distributed systems', 'Machine learning', 'Neural networks', 'Decentralized infrastructure', 'Heterogeneous environment', 'High-volume model training', 'Reproducibility', 'Code design', 'Testing', 'Documentation', 'Research papers', 'NeurIPS', 'ICML', 'ICLR', 'AAAI', 'IJCAI'
+'Python', 'FastAPI', 'Pandas', 'NumPy', 'Retrieval Augmented Generation (RAG)','vector databases', 'embedding models', 'LangChain', 'LangGraph', 'LlamaIndex', 'CrewAI', 'Autogen', 'Taskweave', 'Azure Functions', 'Azure', 'data engineering', 'data pipelines', 'data integration', 'data warehousing', '.NET', 'C#'
+'GitLab', 'AWS', 'AWS CDK', 'Python', 'SQL'
+'Python', 'PyTorch', 'Transformers', 'Weights & Biases', 'Label-Studio', 'MongoDB', 'PostgreSQL', 'Elasticsearch', 'Apache Kafka', 'Amazon AWS', 'ELK', 'Prometheus', 'Grafana'
+'Python', 'SQL', 'Spark', 'AWS', 'Docker', 'Datadog', 'Airflow', 'dbt', 'Snowflake'
+'Python', 'PyTorch', '3D Mesh', 'GenAI', 'Flux', 'Stable Diffusion'
+'OCR', 'Python', 'TensorFlow', 'AWS', 'Cloudwatch', 'Lambda', 'Dynamo'
+'Python', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'AWS', 'GCP', 'Azure', 'MLOps', 'CI/CD'
+'Python', 'Machine Learning', 'NLP', 'Gradient Boosted Trees', 'Large Language Models', 'TensorFlow', 'PyTorch', 'LangChain', 'SQLAlchemy', 'Alembic', 'Flask', 'Django', 'FastAPI', 'Recommendation Engines', 'Retrieval-Augmented Generation'
+
+
+
+
+

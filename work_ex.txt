@@ -1,66 +1,22 @@
-### **Diffusion-Based Tasks**  
-1. **Synthetic Data Generation for Wheels**  
-   - Utilized diffusion models to generate synthetic data for object detection tasks, focusing on improving the training process. The model, trained solely on synthetic images, initially underperformed but showed significant improvement when real images were incorporated into the training set. This approach demonstrated the potential of generative AI in creating high-quality, synthetic datasets for industrial applications.
+Literature Review: A practical review of diffusion-based image editing techniques was conducted, and state-of-the-art methods were reimplemented using Hugging Face and PyTorch in Python.  
 
-2. **Fine-Tuning Stable Diffusion for Industrial Use Cases**  
-   - Fine-tuned Stable Diffusion to detect industrial components, including shock absorbers and left screws, with minimal training data. The process required just 10-20 images and 20-30 minutes of training, showcasing the efficiency of diffusion models for specialized tasks and enabling rapid deployment in industrial settings with minimal data.
+Image Generation: An end-to-end pipeline was created using a custom fine-tuned diffusion model to generate realistic images for industrial applications with limited data, reducing the error rate by 50%.  
 
-3. **Diffusion-Based OCR Data Augmentation**  
-   - Experimented with using diffusion models to generate text-based data for Optical Character Recognition (OCR) training. The challenges included handling curved text and the absence of full-text captions, which impacted model accuracy. This highlighted the limitations of using generative models for OCR data augmentation and the need for more advanced techniques in text-based model training.
+Model Optimization: The Hugging Face transformer library and parameter-efficient fine-tuning methods were leveraged for quick training of the diffusion model with minimal samples, optimizing performance.  
 
-4. **Parameter Efficient Fine-Tuning (PEFT) for Diffusion Models**  
-   - Investigated efficient fine-tuning methods for diffusion models to optimize training time and reduce memory consumption. While this approach required less storage, the training time remained similar to that of full fine-tuning, demonstrating the trade-off between efficiency and performance in model optimization.
+Controlled Image Generation: The diffusion model was integrated with control nets to generate text on images, deployed internally using Git and Docker, enabling the creation of images from rare classes.  
 
-5. **Training a Tiny-Diffusion Model from Scratch**  
-   - Developed a lightweight diffusion model from scratch to explore alternative architectures in generative modeling. Despite training for 60,000 steps, the model’s performance was suboptimal, indicating the need for additional refinement and further training to achieve desired results in real-world applications.
+Anomaly Detection: A literature review on visual anomaly detection methods was conducted, and a state-of-the-art anomaly detection method was applied for industrial quality control using OpenCV and PyTorch.  
 
-6. **Improving Image Masking with Diffusion Models**  
-   - Combined diffusion models with SAM-2 for automated image segmentation, improving mask accuracy while maintaining fast inference speeds. This approach led to more semantically accurate image masks, enhancing the precision of tasks such as defect detection and image editing in industrial use cases.
+Quality Inspection: A vision anomaly detection model was developed for real-time quality inspection in collaboration with a large automotive client, improving speed by 85% without compromising performance. Collaborated with the development team for deployment and coordinated with the product team for post-production monitoring.  
 
-7. **Super-Resolution Training for Industrial Image Processing**  
-   - Employed high-resolution diffusion training to enhance image detail for improved defect detection in industrial image processing. While the approach successfully preserved image details, it required significant GPU memory, highlighting the trade-offs between image quality and resource consumption in industrial applications.
+Object Tracking: Led a project for an international aerospace company, delivering a real-time contamination estimation system that was 10x faster than manual methods. Utilized OpenCV, Python, and deep learning techniques for model development. Collaborated with cross-functional teams for deployment and integration.  
 
-8. **Cross-Attention Based Mask Generation for Diffusion Models**  
-   - Explored cross-attention mechanisms to improve the generation of image masks using diffusion models. This method resulted in better generalization of mask creation across multiple datasets, improving the adaptability and performance of the model in various real-world scenarios.
+OCR Enhancement: Fine-tuned a transformer-based multimodal OCR detector on a custom dataset, replacing the previous OCR model and achieving an 8% increase in F1-score. This improvement contributed to higher product sales, generating an additional €200,000 in revenue.  
 
+Object Segmentation: Developed an automated system for object segmentation and size estimation using the Segment Anything Model, integrating OpenCV and Scikit-Learn for enhanced computer vision processing. Generated detailed reports in a fully automated manner, contributing to €60,000 in revenue.  
 
-### **YOLO-Based Tasks**  
+Object Detection: A new YOLO model was trained for object detection and compared with other detection methods. Implemented using CI/CD pipelines, resulting in a 4x faster inference speed.
 
-- **Industrial Defect Detection with YOLOv11 and CycleOPS**: Conducted performance benchmarking for defect detection in industrial environments, comparing YOLOv11 and CycleOPS models. YOLOv11 demonstrated a 4x speed advantage due to GPU acceleration, proving its efficiency for real-time applications in manufacturing defect detection. Key skill: Object Detection.  
-
-- **YOLO-Pose for Keypoint Detection in Control Dimensions**: Fine-tuned YOLO-Pose for detecting keypoints in control dimension Votat, though performance was limited by a small dataset of just 10 images. This highlighted the importance of dataset size for model accuracy. Key skill: Pose Estimation.  
-
-- **YOLO for TIN Localization in Industrial Defects**: Trained YOLO Nano on the Batilly & Douai datasets for detecting industrial defects, achieving a high mAP50 score of 0.995 and an impressive 30ms inference time per image. This showcased YOLO's capability in handling real-time industrial defect localization. Key skill: Computer Vision, Python.  
-
-- **Dataset Creation for YOLO Model Training**: Created a master dataset containing 4,253 training images and 800 evaluation images to improve YOLO's performance across various manufacturing datasets. This significantly boosted the model's accuracy and robustness. Key skill: Data Curation.  
-
-- **Testing OCR with YOLO for Wheel Inspection**: Evaluated YOLO-based optical character recognition (OCR) for wheel inspection, comparing it against transformer-based OCR models. The transformer models outperformed YOLO in terms of accuracy, emphasizing the need for more advanced OCR techniques in this application. Key skill: OCR & Classification, Python.  
-
-- **Contamination Detection via YOLOv8 and Object Tracking**: Implemented ByteTrack-based object tracking in YOLOv8 for contamination detection. While the approach showed promise, it faced challenges due to inconsistent object tracking IDs, which affected its overall performance. Key skill: Object Tracking.  
-
-- **Anomaly Detection with YOLO for PCB Inspection**: Conducted testing on YOLO for detecting defects in printed circuit boards (PCBs). The model achieved over 99% accuracy on two datasets but struggled with lower accuracy (below 96%) on others, highlighting the variability in defect detection performance. Key skill: Anomaly Detection, Python.  
-
-- **Ablation Study to Optimize YOLO Performance**: Conducted an ablation study on YOLO's hyperparameters to identify the optimal configurations for industrial defect detection. Found that a resolution of 1280x1280 yielded the best performance, making it a key insight for improving YOLO's application in industrial settings. Key skill: Model Optimization.
-
-
-
-**PatchCore & Efficient AD for Wafer Defect Detection**  
-Applied anomaly detection techniques to a Thales dataset for wafer defect detection. The performance achieved 100% precision, though it was biased due to brightness differences in the data. This project focused on utilizing anomaly detection methods to improve defect identification. **Key Skill:** Anomaly Detection, Python  
-
-**Multi-Zone Anomaly Detection with PatchCore**  
-Implemented a multi-zone anomaly detection approach by dividing an industrial component into three separate zones for independent defect detection. This approach increased processing time by 3x compared to using a single model. **Key Skill:** Industrial AI  
-
-**Applying PatchCore for PCB Inspection**  
-Evaluated PatchCore against other anomaly detection models across four different PCB datasets. While PatchCore achieved >99% accuracy on two datasets, it performed below 96% on the remaining two datasets, highlighting the need for model adjustment based on dataset characteristics. **Key Skill:** Deep Learning for Inspection, Python  
-
-**PatchCore-Based Defect Segmentation for Thales Components**  
-Utilized PatchCore for defect segmentation in manufacturing processes, specifically for Thales components. The segmentation model performed best at 1024x1024 resolution, achieving the most accurate defect segmentation at this resolution. **Key Skill:** Image Segmentation
-
-
-
-CRISTAL, Université de Lille Villeneuve d'Ascq, Lille, France
-Doctoral Researcher
-Oct 2021 - Mar 2024
-Developed deep learning methods in Python and TensorFlow to predict the remaining useful life of industrial components, achieving a 37% improvement in prediction accuracy. Led international collaborations and published first-authored journal papers. Applied advanced modeling techniques with MATLAB and TensorFlow to create hybrid fault diagnosis methods, which reduced the need for labeled data by 55%. Presented research at national and international conferences.
 
 
