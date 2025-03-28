@@ -1,0 +1,29 @@
+YouTube Channel - Intelligent Machines Villeneuve d'Ascq, Lille, France
+Educator
+Aug 2021 - Present
+Recognizing the gap in content for data-driven condition monitoring, leveraged expertise in Python, Scikit-learn, Pandas, TensorFlow, Pytorch, Hugging Face, and MATLAB to create a YouTube channel focused on educating the community in this field.
+
+
+**1. Automatic Speech Recognition (ASR) Model Fine-tuning**  
+Fine-tuned the Whisper ASR model using a PyTorch loop on a custom dataset, reducing the word error rate from 90% to 8.75% after five epochs. This involved training the model on a variety of audio samples to enhance its transcription accuracy and robustness.  
+**Key Skill:** Automatic Speech Recognition, PyTorch, Model Fine-tuning, Python
+
+**2. Small Language Model Development with PyTorch**  
+Designed and implemented a small language model in PyTorch, focusing on key components such as tokenization, embedding layers, and positional encoding. Developed a simplified Transformer architecture featuring self-attention mechanisms and look-ahead masking to predict subsequent words, optimizing for efficiency and accuracy.  
+**Key Skill:** PyTorch, Transformer Architecture, Natural Language Processing
+
+**3. Optimized Model Performance**  
+Enhanced model performance through effective loss function design and weight adjustments, resulting in coherent text generation. Fine-tuned the model's training process to improve the quality of output, ensuring high relevance and fluency in the generated text.  
+**Key Skill:** Machine Learning, Loss Function Optimization
+
+**4. Automatic PDF to Podcast Conversion**  
+Developed an automated workflow to convert PDF documents into podcasts using large language models (LLMs) and text-to-speech (TTS) technology. This involved PDF text extraction, text cleaning, prompt engineering, chunking, and the integration of TTS for audio generation.  
+**Key Skills:** PDF Text Extraction, Text Cleaning, Prompt Engineering, Text Chunking, Text-to-Speech Conversion, Jupyter Notebooks
+
+**5. RAG System Development**  
+Built a Retrieval Augmented Generation (RAG) system utilizing the Llama model to answer questions about the Bhagavad Gita, ensuring factually accurate responses. Employed techniques such as text chunking, text encoding, vector databases, and similarity search to generate context-aware answers.  
+**Key Skills:** Retrieval Augmented Generation (RAG), Llama, Text Chunking, Text Encoding, Vector Databases, Similarity Search
+
+**6. RAG Application Development**  
+Developed a Retrieval Augmented Generation (RAG) application using Llama 3.2, optimized for memory efficiency through 8-bit and 4-bit quantization. The app was designed to answer questions based on the Bhagavad Gita, with optimized performance and memory usage for efficient deployment.  
+**Key Skills:** Retrieval Augmented Generation (RAG), Llama, Memory Optimization, Quantization
