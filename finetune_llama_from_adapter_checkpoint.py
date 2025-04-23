@@ -84,7 +84,7 @@ train_dataset = LlamaDataset(dataset['train'])
 train_dataloader = DataLoader(train_dataset, batch_size=2, shuffle=True)
 
 model = prepare_model_for_kbit_training(model)
-model = PeftModel.from_pretrained(model, 'adapter', is_trainable=True) # Biggest chnage in this script
+model = PeftModel.from_pretrained(model, '/home/nas/buffer/mohan.dash/llama_3_finetuned/adapter', is_trainable=True) # Biggest chnage in this script
 
 
 def generate_eval(model,idx=5,disable_lora=False):
@@ -114,7 +114,7 @@ def generate_eval(model,idx=5,disable_lora=False):
     else:
         output = model.generate(
         **inputs,
-        do_sample=False,
+        do_sample=True,
         max_new_tokens=512,
         repetition_penalty=1.3,
         temperature=0.7,         # Optional: smooth randomness
@@ -183,27 +183,35 @@ while global_step< max_steps:
             break
         
         if global_step % 20 == 0:
-            pred = generate_eval(model=model,idx=50,disable_lora=False)
-            
-            # Save predictions to a text file named with current step
+            indices = [100, 200, 300, 400, 500]
+            all_preds = [f"Step: {global_step}, Loss: {loss.item():.4f}\n\n"]
+
+            for idx in indices:
+                pred = generate_eval(model=model, idx=idx, disable_lora=False)
+                pred_str = pred if isinstance(pred, str) else str(pred)
+                section = f"*************** IDX {idx} ***************\n{pred_str}\n"
+                all_preds.append(section)
+
+            # Join all sections and write to file
+            full_text = "\n" + "\n".join(all_preds)
             pred_filename = os.path.join('/home/nas/buffer/mohan.dash/llama_3_finetuned', f"{global_step}.txt")
             with open(pred_filename, "w") as f:
-                f.write(pred if isinstance(pred, str) else str(pred))
-            
-            print('*'*20,step+1,'*'*20)
-            print("Predictions:", pred)
-            print('*'*20,'end','*'*20)
-            
-        # if loss.item() < max_loss:
-        #     model.save_pretrained('/home/nas/buffer/mohan.dash/llama_3_finetuned/adapter')
-        #     max_loss = loss.item()
-        #     save_path = "/home/nas/buffer/mohan.dash/llama_3_finetuned/model_checkpoint.pt"
+                f.write(full_text)
 
-        #     torch.save({
-        #         'optimizer_state_dict': optimizer.state_dict(),
-        #         'lr_scheduler_state_dict': lr_scheduler.state_dict(),
-        #         'global_step': global_step
-        #     }, save_path)
+            print('*' * 20, step + 1, '*' * 20)
+            print("Predictions saved to", pred_filename)
+            print('*' * 20, 'end', '*' * 20)
+            
+        if loss.item() < max_loss:
+            model.save_pretrained('/home/nas/buffer/mohan.dash/llama_3_finetuned/adapter')
+            max_loss = loss.item()
+            save_path = "/home/nas/buffer/mohan.dash/llama_3_finetuned/model_checkpoint.pt"
+
+            torch.save({
+                'optimizer_state_dict': optimizer.state_dict(),
+                'lr_scheduler_state_dict': lr_scheduler.state_dict(),
+                'global_step': global_step
+            }, save_path)
             
             
             

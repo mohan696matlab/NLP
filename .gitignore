@@ -22,3 +22,6 @@ cleaned_text.pkl
 cleaned_text.pkl
 tts_text.txt
 adapter
+llama_odia_tokenizer
+odia_tokenizer
+odia_corpus.txt
