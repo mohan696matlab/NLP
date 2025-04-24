@@ -184,16 +184,24 @@ while global_step< max_steps:
             break
         
         if global_step % 20 == 0:
-            pred = generate_eval(model=model,idx=50,disable_lora=False)
-            
-            # Save predictions to a text file named with current step
+            indices = [100, 200, 300, 400, 500]
+            all_preds = [f"Step: {global_step}, Loss: {loss.item():.4f}\n\n"]
+
+            for idx in indices:
+                pred = generate_eval(model=model, idx=idx, disable_lora=False)
+                pred_str = pred if isinstance(pred, str) else str(pred)
+                section = f"*************** IDX {idx} ***************\n{pred_str}\n"
+                all_preds.append(section)
+
+            # Join all sections and write to file
+            full_text = "\n" + "\n".join(all_preds)
             pred_filename = os.path.join('/home/nas/buffer/mohan.dash/llama_3_finetuned', f"{global_step}.txt")
             with open(pred_filename, "w") as f:
-                f.write(pred if isinstance(pred, str) else str(pred))
-            
-            print('*'*20,step+1,'*'*20)
-            print("Predictions:", pred)
-            print('*'*20,'end','*'*20)
+                f.write(full_text)
+
+            print('*' * 20, step + 1, '*' * 20)
+            print("Predictions saved to", pred_filename)
+            print('*' * 20, 'end', '*' * 20)
             
         if loss.item() < max_loss:
             model.save_pretrained('/home/nas/buffer/mohan.dash/llama_3_finetuned/adapter')
